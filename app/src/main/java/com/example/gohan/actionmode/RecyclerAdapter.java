@@ -78,4 +78,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         }
     }
 
+    public void updateAdapter(ArrayList<Contact> list)
+    {
+        for(Contact contact:list)
+        {
+            adapter_list.remove(contact);
+        }
+        notifyDataSetChanged();
+    }
+
 }

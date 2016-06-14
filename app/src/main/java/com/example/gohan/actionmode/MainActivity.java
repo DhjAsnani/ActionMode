@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_activity_main,menu);
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
         return true;
     }
 
@@ -89,7 +90,32 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             counterTextView.setText("0 item selected");
         }
         else {
-            counterTextView.setText(counter+" item selected");
+            counterTextView.setText(counter + " item selected");
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.it_delete)
+        {
+
+            RecyclerAdapter recyclerAdapter = (RecyclerAdapter) adapter;
+            recyclerAdapter.updateAdapter(selectionList);
+            clearActionM();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void clearActionM()
+    {
+        is_in_action_mode = false;
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu(R.menu.menu_activity_main);
+        //remove home button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        counterTextView.setVisibility(View.GONE);
+        counterTextView.setText("0 item selected");
+        counter = 0;
+        selectionList.clear();
     }
 }
