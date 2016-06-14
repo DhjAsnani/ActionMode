@@ -118,4 +118,17 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         counter = 0;
         selectionList.clear();
     }
+
+    @Override
+    public void onBackPressed() {
+        if(is_in_action_mode)
+        {
+            clearActionM();
+            adapter.notifyDataSetChanged();
+        }
+        else {
+            finish();
+        }
+        super.onBackPressed();
+    }
 }
