@@ -127,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             adapter.notifyDataSetChanged();
         }
         else {
-            finish();
+            super.onBackPressed();
         }
-        super.onBackPressed();
+
     }
 }
