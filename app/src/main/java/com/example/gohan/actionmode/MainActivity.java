@@ -103,7 +103,12 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             recyclerAdapter.updateAdapter(selectionList);
             clearActionM();
         }
-        return super.onOptionsItemSelected(item);
+        else if(item.getItemId() == android.R.id.home)
+        {
+            clearActionM();
+            adapter.notifyDataSetChanged();
+        }
+        return true;
     }
 
     public void clearActionM()
