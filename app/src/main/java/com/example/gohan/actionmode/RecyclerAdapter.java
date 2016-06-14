@@ -51,7 +51,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         return adapter_list.size();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder{
+
+
+    public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textView;
         CheckBox checkBox;
@@ -67,7 +69,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             this.mainActivity = mainActivity;
             cardView = (CardView) itemview.findViewById(R.id.card_view);
             cardView.setOnLongClickListener(mainActivity);
+            checkBox.setOnClickListener((View.OnClickListener) this);
         }
 
+        @Override
+        public void onClick(View v) {
+            mainActivity.prepareselection(v,getAdapterPosition());
+        }
     }
+
 }

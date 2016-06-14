@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     RecyclerView.Adapter adapter;
     Toolbar toolbar;
     ArrayList<Contact> arrayList = new ArrayList<Contact>();
+    ArrayList<Contact> selectionList = new ArrayList<Contact>();
+    int counter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,5 +64,32 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         // home button on action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
+    }
+
+    public void prepareselection(View view,int position)
+    {
+        //change view to checkbox
+        if(((CheckBox)view).isChecked())
+        {
+            selectionList.add(arrayList.get(position));
+            counter++;
+            updateCnt(counter);
+        }
+        else {
+            selectionList.remove(arrayList.get(position));
+            counter--;
+            updateCnt(counter);
+        }
+    }
+
+    public void updateCnt(int counter)
+    {
+        if(counter==0)
+        {
+            counterTextView.setText("0 item selected");
+        }
+        else {
+            counterTextView.setText(counter+" item selected");
+        }
     }
 }
