@@ -1,6 +1,7 @@
 package com.example.gohan.actionmode;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         TextView textView;
         CheckBox checkBox;
         MainActivity mainActivity;
+        // cardview for long click
+        CardView cardView;
         public RecyclerViewHolder(View itemview, MainActivity mainActivity)
         {
             // mainActivity is used for handling the click events of the checkboxes
@@ -62,6 +65,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             textView = (TextView) itemview.findViewById(R.id.textView);
             checkBox= (CheckBox) itemview.findViewById(R.id.checkBox);
             this.mainActivity = mainActivity;
+            cardView = (CardView) itemview.findViewById(R.id.card_view);
+            cardView.setOnLongClickListener(mainActivity);
         }
+
     }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnLongClickListener{
     boolean is_in_action_mode = false;
     TextView counterTextView;
     RecyclerView recyclerView;
@@ -48,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu(R.menu.menu_action_mode);
+        is_in_action_mode = true;
+        counterTextView.setVisibility(View.VISIBLE);
+        adapter.notifyDataSetChanged();
+        // home button on action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
 }
