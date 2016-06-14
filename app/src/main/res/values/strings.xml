@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ActionMode</string>
+    <string-array name="names">
+        <item>Dheeraj Asnani</item>
+        <item>Goku</item>
+        <item>Vegeta</item>
+        <item>Gohan</item>
+        <item>Videl</item>
+        <item>Chichi</item>
+    </string-array>
+
 </resources>
