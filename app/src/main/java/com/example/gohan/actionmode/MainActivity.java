@@ -6,10 +6,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    boolean is_in_action_mode = false;
+    TextView counterTextView;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        counterTextView = (TextView) findViewById(R.id.cnt_text);
+        counterTextView.setVisibility(View.GONE);
         String [] Name=getResources().getStringArray(R.array.names);
         int i=0;
         for(String NAME:Name)

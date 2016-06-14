@@ -34,6 +34,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.textView.setText(adapter_list.get(position).getName());
+        if(!mainActivity.is_in_action_mode)
+        {
+            holder.checkBox.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.checkBox.setVisibility(View.VISIBLE);
+            holder.checkBox.setChecked(false);
+        }
     }
 
     @Override

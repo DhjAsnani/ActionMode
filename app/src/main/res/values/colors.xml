@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#006064</color>
     <color name="colorPrimaryDark">#004D40</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ecf2ec</color>
     <color name="forcard">#388E3C</color>
 </resources>
